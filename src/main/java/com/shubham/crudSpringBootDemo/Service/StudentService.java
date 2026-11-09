@@ -15,7 +15,7 @@ public class StudentService {
     }
 
     public Student createStudent(Student studentReq){
-        Student createdStudent = studentRepository.saveStudent(studentReq);
+        Student createdStudent = studentRepository.save(studentReq);
         return createdStudent;
     }
 }

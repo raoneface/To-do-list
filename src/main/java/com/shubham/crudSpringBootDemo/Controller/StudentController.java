@@ -20,6 +20,7 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
+    // create a api -> save()
 
     @PostMapping("/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
@@ -28,4 +29,8 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
         // return ResponseEntity.status(201).body(createdStudent);
     }
+
+
+    // read all -> findAll()
+
 }

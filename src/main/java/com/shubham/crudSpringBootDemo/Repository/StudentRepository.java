@@ -1,21 +1,12 @@
 package com.shubham.crudSpringBootDemo.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import com.shubham.crudSpringBootDemo.Entity.Student;
 
-@Repository
-public class StudentRepository  {
+//@Repository
 
-    public Student saveStudent(Student studentReq) {
-        // save to datadb
-        Student s1 = new Student();
-        s1.setName("Shubham");
-        s1.setEmail("Raoneface@gmail.com");
-        s1.setAge(27);
-        s1.setSubject("CSE");
-        Long l1 = (long)1321;
-        s1.setId(l1);
-        return s1;
-    }
+//we can write @Repository but it not affect anything bceause it is interface
+public interface StudentRepository extends JpaRepository<Student,Long> {
+
 }
