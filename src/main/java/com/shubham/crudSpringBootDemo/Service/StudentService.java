@@ -3,6 +3,7 @@ package com.shubham.crudSpringBootDemo.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.shubham.crudSpringBootDemo.Entity.Student;
@@ -24,6 +25,7 @@ public class StudentService {
         return createdStudent;
     }
 
+    // logic for geting student
     public Student getStudent(Long id) {
         Optional<Student> studentResponse = studentRepository.findById(id);
 
@@ -33,6 +35,7 @@ public class StudentService {
         return null;
     }
 
+    // logic for getting for all student
     public List<Student> getAllStudent() {
         List<Student> studentResponse = studentRepository.findAll();
 
@@ -40,5 +43,20 @@ public class StudentService {
             return studentResponse;
         }
         return null;
+    }
+
+    // logic for update
+    public Student updateStudent(Long id , Student studentReq) {
+        Optional<Student> ExistingStudent = studentRepository.findById(id);
+        if(ExistingStudent.isEmpty()){
+            return null;
+        }else{
+            Student studentTosave = ExistingStudent.get();
+            studentTosave.setName(studentReq.getName());
+            studentTosave.setEmail(studentReq.getEmail());
+            studentTosave.setAge(studentReq.getAge());
+            studentTosave.setSubject(studentReq.getSubject());
+            return studentRepository.save(studentTosave);
+        }
     }
 }
