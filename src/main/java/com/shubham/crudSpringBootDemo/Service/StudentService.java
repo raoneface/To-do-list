@@ -3,7 +3,6 @@ package com.shubham.crudSpringBootDemo.Service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.shubham.crudSpringBootDemo.Entity.Student;
@@ -58,5 +57,13 @@ public class StudentService {
             studentTosave.setSubject(studentReq.getSubject());
             return studentRepository.save(studentTosave);
         }
+    }
+    public Boolean deleteStudent(Long id){
+        Boolean isstudent = studentRepository.existsById(id);
+        if(!isstudent){
+            return false;
+        }
+        studentRepository.deleteById(id);
+        return true;
     }
 }
